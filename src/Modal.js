@@ -41,6 +41,7 @@ class Modal extends React.Component {
                         marginTop: '-30px',
                         cursor: 'pointer'
                     }}
+                        alt={"Header"}
                         onClick={() => {this.props.handleCloseModal()}}
                         src={crossButton} />
                     <div><span style={{
@@ -56,7 +57,7 @@ class Modal extends React.Component {
                                                 display: this.props.showModal === true ? 'flex' : 'none'
                                             }}
                                         >
-                                            <img src={el.urls.regular}/>
+                                            <img alt={"Gallery"} src={el.urls.regular}/>
                                         </div>
                                     )
                                 })
