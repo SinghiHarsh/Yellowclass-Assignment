@@ -66,7 +66,11 @@ class OverviewListContainer extends React.PureComponent {
     }
     else {
       return (
-        <div>
+        <div style={{
+          display: 'flex',
+          justifyContent: 'center',
+          alignItems:'center'
+        }}>
           <p>Hello World</p>
         </div>
       )

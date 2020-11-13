@@ -79,17 +79,16 @@ class OverviewList extends React.PureComponent {
               style={{
                 ...style,
                 width: columnWidth,
-                marginLeft: '18px',
+                marginLeft: '30px',
                 marginTop: '15px',
               }}
             >
               <div
                 className="HoverElement"
                 style={{
-                  height: 290,
                   width: "100%",
                   fontSize: 50,
-                  padding: '12px 24px',
+                  // padding: '10px 20px',
                   display: "flex",
                   alignItems: "center",
                   justifyContent: "center",
