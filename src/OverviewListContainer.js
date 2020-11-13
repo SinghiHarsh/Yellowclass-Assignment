@@ -45,51 +45,62 @@ class OverviewListContainer extends React.PureComponent {
       customElement: container
     };
   }
-  handleLoadImages = () => {
+  handleLoadImages = (e) => {
+    e.preventDefault();
+    this.getImagesBasedOnPageNumber(pageNumber);
+    // window.location.reload();
     this.setState({
       display: true
-    })
+    });
     // window.location.reload();
   }
   render() {
-    if (this.state.imageList.length > 0) {
+    // if (this.state.imageList.length > 0) {
+    if (this.state.display) {
+      if (this.state.imageList.length > 0) {
+        return (
+          <InfiniteScroll
+            dataLength={this.state.imageList.length}
+            next={this.getImagesBasedOnPageNumber}
+            hasMore={true}
+            // loader={<h4>Loading...</h4>}
+          >
+            <OverviewList
+            items={this.state.imageList}
+            showImages = {this.state.display}
+            />
+          </InfiniteScroll> 
+        ); 
+      }
+      else {
+        return (
+          <div
+            style={{
+              display: 'flex',
+              justifyContent: 'center',
+              alignItems: 'center'
+            }}
+          >
+            <h1 className="ml12">Loading Photos</h1>
+          </div>
+        )
+      }
+    }
+    else {
       return (
         <div>
           <div style={{
-            width: '100%',
-            textAlign: 'center',
-            marginTop: '20px'
+            height: '100vh',
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center'
             }}>
-            <a href="!" onClick={this.handleLoadImages} className="Center-btn">
+              <a href="!" onClick={this.handleLoadImages} className="Center-btn">
                 <span>Explore</span>
                 <div class="liquid"></div>
               </a>
-            </div>
-            <InfiniteScroll
-              dataLength={this.state.imageList.length}
-              next={this.getImagesBasedOnPageNumber}
-              hasMore={true}
-              // loader={<h4>Loading...</h4>}
-            >
-              <OverviewList
-              items={this.state.imageList}
-              showImages = {this.state.display}
-              />
-            </InfiniteScroll>
           </div>
-      );
-    }
-    else {
-    return (
-      <div
-        style={{
-          display: 'flex',
-          justifyContent: 'center',
-          alignItems: 'center'
-        }}
-      >
-        <h1 className="ml12">Loading Photos</h1>
-      </div>
+        </div>
       )
     }
   }
