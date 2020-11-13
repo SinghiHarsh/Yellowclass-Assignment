@@ -3,6 +3,7 @@ import OverviewList from "./OverviewList";
 import PropTypes from "prop-types";
 import Unsplash, { toJson } from 'unsplash-js';
 import InfiniteScroll from "react-infinite-scroll-component";
+import './App.css';
 
 let pageNumber = 1;
 
@@ -48,12 +49,11 @@ class OverviewListContainer extends React.PureComponent {
   render() {
     if (this.state.imageList.length > 0) {
       return (
-        <div>
           <InfiniteScroll
-            dataLength={this.state.imageList.length}
+             dataLength={this.state.imageList.length}
             next={this.getImagesBasedOnPageNumber}
             hasMore={true}
-            loader={<h4>Loading...</h4>}
+            // loader={<h4>Loading...</h4>}
           >
             <OverviewList
               items={this.state.imageList}
@@ -61,18 +61,19 @@ class OverviewListContainer extends React.PureComponent {
 
             />
           </InfiniteScroll>
-        </div>
       );
     }
     else {
-      return (
-        <div style={{
+    return (
+      <div
+        style={{
           display: 'flex',
           justifyContent: 'center',
-          alignItems:'center'
-        }}>
-          <p>Hello World</p>
-        </div>
+          alignItems: 'center'
+        }}
+      >
+        <h1 className="ml12">Loading Photos</h1>
+      </div>
       )
     }
   }

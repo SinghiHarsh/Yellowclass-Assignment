@@ -86,12 +86,12 @@ class OverviewList extends React.PureComponent {
               <div
                 className="HoverElement"
                 style={{
-                  width: "100%",
-                  fontSize: 50,
+                  // height: 290,
+                  // fontSize: 50,
                   // padding: '10px 20px',
-                  display: "flex",
-                  alignItems: "center",
-                  justifyContent: "center",
+                  // display: "flex",
+                  // alignItems: "center",
+                  // justifyContent: "center",
                 }}
               >
                 <img
@@ -171,13 +171,13 @@ class OverviewList extends React.PureComponent {
           >
             {({ width }) => (
               <Masonry
-                autoHeight
+                // autoHeight
                 cellCount={this.props.items.length}
                 cellMeasurerCache={this._cache}
                 cellPositioner={this._cellPositioner}
                 cellRenderer={this._cellRenderer}
                 height={this.props.height}
-                overscanByPixels={0}
+                // overscanByPixels={0}
                 ref={this._setMasonryRef}
                 scrollTop={scrollTop}
                 width={width}
