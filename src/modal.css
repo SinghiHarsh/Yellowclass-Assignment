@@ -1,0 +1,32 @@
+.Modal-popup {
+    height: 100%;
+    width: 100%;
+    overflow: hidden;
+    position: fixed;
+    top: 0;
+    left: 0;
+    background-color: rgba(0, 0, 0, .8);
+    z-index: 10;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.Modal-content {
+    overflow: hidden;
+    /* background-color: #fff; */
+    box-shadow: 0 2rem 4rem rgba(0, 0, 0, 0.2);
+    border-radius: 3px;
+    padding: 2.5rem;
+    margin-left: auto;
+    margin-right: auto;
+    width: 900px;
+    height: 600px;
+}
+
+.slick-slide img {
+    margin: auto;
+}
+/* .slick-arrow  {
+    background-color: black;
+} */
+  
