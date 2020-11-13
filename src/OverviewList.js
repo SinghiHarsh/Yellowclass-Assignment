@@ -19,7 +19,7 @@ class OverviewList extends React.PureComponent {
     this.state = {
       columnWidth: 200,
       height: 300,
-      gutterSize: 10,
+      gutterSize: 14,
       showModal: false,
       userImagesList: [],
       blur: false
@@ -79,14 +79,19 @@ class OverviewList extends React.PureComponent {
               style={{
                 ...style,
                 width: columnWidth,
-                marginLeft: '30px',
+                marginLeft: '15px',
                 marginTop: '15px',
               }}
             >
               <div
                 className="HoverElement"
                 style={{
-                  // height: 290,
+                  height: datum.size * 3,
+                  width: '100%',
+                  fontSize: 50,
+                  color: 'white',
+                  alignItems: 'center',
+                  justifyContent: 'center',
                   // fontSize: 50,
                   // padding: '10px 20px',
                   // display: "flex",
@@ -156,7 +161,7 @@ class OverviewList extends React.PureComponent {
   }
 
   render() {
-    console.log(this.state);
+    console.log(this.props);
     this._initCellPositioner();
     return (
       <>
@@ -171,12 +176,12 @@ class OverviewList extends React.PureComponent {
           >
             {({ width }) => (
               <Masonry
-                // autoHeight
+                autoHeight
                 cellCount={this.props.items.length}
                 cellMeasurerCache={this._cache}
                 cellPositioner={this._cellPositioner}
                 cellRenderer={this._cellRenderer}
-                height={this.props.height}
+                height={height}
                 // overscanByPixels={0}
                 ref={this._setMasonryRef}
                 scrollTop={scrollTop}

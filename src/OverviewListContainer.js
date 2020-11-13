@@ -13,7 +13,7 @@ class OverviewListContainer extends React.PureComponent {
     this.state = {
       imageList: [],
       totalPageCount: 0,
-      containerHeight: 1000
+      display: false
     }
   }
   static childContextTypes = {
@@ -27,7 +27,7 @@ class OverviewListContainer extends React.PureComponent {
         // console.log(images);
         this.setState({
           imageList: [...this.state.imageList, ...images],
-          containerHeight: this.state.containerHeight + 400
+          // containerHeight: this.state.containerHeight + 400
         })
       })
       .catch(err => {
@@ -35,7 +35,7 @@ class OverviewListContainer extends React.PureComponent {
         console.error(err);
     })
   }
-  componentDidMount() {
+  componentDidMount() { 
     this.getImagesBasedOnPageNumber(pageNumber);
   }
 
@@ -45,22 +45,38 @@ class OverviewListContainer extends React.PureComponent {
       customElement: container
     };
   }
-
+  handleLoadImages = () => {
+    this.setState({
+      display: true
+    })
+    // window.location.reload();
+  }
   render() {
     if (this.state.imageList.length > 0) {
       return (
-          <InfiniteScroll
-             dataLength={this.state.imageList.length}
-            next={this.getImagesBasedOnPageNumber}
-            hasMore={true}
-            // loader={<h4>Loading...</h4>}
-          >
-            <OverviewList
+        <div>
+          <div style={{
+            width: '100%',
+            textAlign: 'center',
+            marginTop: '20px'
+            }}>
+            <a href="!" onClick={this.handleLoadImages} className="Center-btn">
+                <span>Explore</span>
+                <div class="liquid"></div>
+              </a>
+            </div>
+            <InfiniteScroll
+              dataLength={this.state.imageList.length}
+              next={this.getImagesBasedOnPageNumber}
+              hasMore={true}
+              // loader={<h4>Loading...</h4>}
+            >
+              <OverviewList
               items={this.state.imageList}
-              height={this.state.containerHeight}
-
-            />
-          </InfiniteScroll>
+              showImages = {this.state.display}
+              />
+            </InfiniteScroll>
+          </div>
       );
     }
     else {
